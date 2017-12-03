@@ -6,7 +6,7 @@ class TalksController < ApplicationController
   def index
     session[:page] = 'index'
     @talks=[]
-    @talks << Talk.order(id: :desc).limit(14)
+    @talks << Talk.order(id: :desc).limit(7)
     @talks << Talk.where(created_at: Time.now-0.5.hour..Time.now-0.25.hour).order(id: :desc).limit(3)
     @talks << Talk.where(created_at: Time.now-1.hour..Time.now-0.5.hour).order(id: :desc).limit(3)
     @talks << Talk.where(created_at: Time.now-2.hour..Time.now-1.hour).order(id: :desc).limit(3)

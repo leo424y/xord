@@ -1,13 +1,8 @@
 <%= render 'form', talk: @talk %>
 <% @talks.each do |talk| %>
-<table>
-  <tbody>
+
     <% talk.each do |talk| %>
-      <tr>
-        <td><%= link_to talk.topic, new_talk_path(talk_from_id: talk.id, talk_from: talk.topic), autofocus: true %></td>
-      </tr>
+        <p><%= link_to talk.topic, new_talk_path(talk_from_id: talk.id, talk_from: talk.topic), autofocus: true %></p>
     <% end %>
-  </tbody>
-</table>
 <br />
 <% end %>

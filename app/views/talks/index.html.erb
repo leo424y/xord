@@ -1,0 +1,23 @@
+<h1>Talks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @talks.each do |talk| %>
+      <tr>
+        <td><%= talk.topic.truncate(10) %></td>
+        <td><%= link_to 'Re', new_talk_path(talk_from_id: talk.id, talk_from: talk.topic) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Talk', new_talk_path %>

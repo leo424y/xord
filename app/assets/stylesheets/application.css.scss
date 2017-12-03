@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+ @media screen and (max-width: 1200px) {
+   a, textarea {
+     font-size: 2em;
+   }
+ }
+
+a {
+  text-decoration: none !important;
+}
+
+textarea {
+  width: 100%;
+}

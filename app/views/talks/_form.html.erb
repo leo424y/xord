@@ -1,28 +1,11 @@
 <%= form_with(model: talk, local: true, id: 'my_talk_form') do |form| %>
-  <% if talk.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(talk.errors.count, "error") %> prohibited this talk from being saved:</h2>
-
-      <ul>
-      <% talk.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
-    <%= form.label :topic %>
     <%= form.text_area :topic, id: :talk_topic, autofocus: true %>
   </div>
 
   <div class="field" hidden>
     <%= form.label :from %>
     <%= form.text_field :from, id: :talk_from, placeholder: params[:talk_from], readonly: true, value: params[:talk_from_id] %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
   </div>
 <% end %>
 <script>
@@ -39,11 +22,11 @@ int1 = setInterval(
     document.querySelector('textarea').focus()
     aw = document.getElementById("talk_topic").value;
     a = document.getElementById("talk_topic").value.length;
-    if (b===a && a != 0){
+    if (a!=0 && b===a){
        document.getElementById("my_talk_form").submit();
     }else{
       b=a;
     }
     console.log( document.getElementById("talk_topic").value.length);
-  }, 5000);
+  }, 3000);
 </script>

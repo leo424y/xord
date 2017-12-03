@@ -1,14 +1,13 @@
-<%= link_to '++', new_talk_path %>
+<%= render 'form', talk: @talk %>
 <% @talks.each do |talk| %>
 <table>
   <tbody>
     <% talk.each do |talk| %>
       <tr>
-        <td><%= link_to '+', new_talk_path(talk_from_id: talk.id, talk_from: talk.topic), autofocus: true %></td>
-        <td><%= talk.topic.truncate(140) %></td>
+        <td><%= link_to talk.topic, new_talk_path(talk_from_id: talk.id, talk_from: talk.topic), autofocus: true %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-------------------
+<br />
 <% end %>

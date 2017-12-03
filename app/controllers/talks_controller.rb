@@ -4,14 +4,17 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.json
   def index
+    session[:page] = 'index'
     @talks=[]
     @talks << Talk.order(id: :desc).limit(3)
+    @talks << Talk.where(created_at: Time.now-0.5.hour..Time.now-0.25.hour).order(id: :desc).limit(3)
+    @talks << Talk.where(created_at: Time.now-1.hour..Time.now-0.5.hour).order(id: :desc).limit(3)
     @talks << Talk.where(created_at: Time.now-2.hour..Time.now-1.hour).order(id: :desc).limit(3)
-    @talks << Talk.where(created_at: Date.today-2.day..Date.today-1.day).order(id: :desc).limit(3)
-    @talks << Talk.where(created_at: Date.today-2.month..Date.today-1.month).order(id: :desc).limit(3)
-    @talks << Talk.where(created_at: Date.today-4.month..Date.today-3.month).order(id: :desc).limit(3)
-    @talks << Talk.where(created_at: Date.today-7.month..Date.today-6.month).order(id: :desc).limit(3)
-    @talks << Talk.where(created_at: Date.today-2.year..Date.today-1.year).order(id: :desc).limit(3)
+    @talks << Talk.where(created_at: Time.now-2.day..Time.now-1.day).order(id: :desc).limit(3)
+    @talks << Talk.where(created_at: Time.now-2.month..Time.now-1.month).order(id: :desc).limit(3)
+    @talks << Talk.where(created_at: Time.now-4.month..Time.now-3.month).order(id: :desc).limit(3)
+    @talks << Talk.where(created_at: Time.now-7.month..Time.now-6.month).order(id: :desc).limit(3)
+    @talks << Talk.where(created_at: Time.now-2.year..Time.now-1.year).order(id: :desc).limit(3)
   end
 
   # GET /talks/1
@@ -22,6 +25,7 @@ class TalksController < ApplicationController
   # GET /talks/new
   def new
     @talk = Talk.new
+    session[:page] = 'new'
   end
 
   # GET /talks/1/edit
@@ -76,6 +80,10 @@ class TalksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def talk_params
+    if	session[:page] == 'new'
       params.require(:talk).permit(:topic, :from)
+    elsif session[:page] == 'index'
+      params.permit(:topic, :from)
+    end
     end
 end

@@ -4,7 +4,14 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.json
   def index
-    @talks = Talk.order(id: :desc)
+    @talks=[]
+    @talks << Talk.order(id: :desc).limit(3)
+    @talks << Talk.where(created_at: Time.now-2.hour..Time.now-1.hour).order(id: :desc).limit(3)
+    @talks << Talk.where(created_at: Date.today-2.day..Date.today-1.day).order(id: :desc).limit(3)
+    @talks << Talk.where(created_at: Date.today-2.month..Date.today-1.month).order(id: :desc).limit(3)
+    @talks << Talk.where(created_at: Date.today-4.month..Date.today-3.month).order(id: :desc).limit(3)
+    @talks << Talk.where(created_at: Date.today-7.month..Date.today-6.month).order(id: :desc).limit(3)
+    @talks << Talk.where(created_at: Date.today-2.year..Date.today-1.year).order(id: :desc).limit(3)
   end
 
   # GET /talks/1

@@ -16,7 +16,7 @@
     <%= form.text_area :topic, id: :talk_topic, autofocus: true %>
   </div>
 
-  <div class="field">
+  <div class="field" hidden>
     <%= form.label :from %>
     <%= form.text_field :from, id: :talk_from, placeholder: params[:talk_from], readonly: true, value: params[:talk_from_id] %>
   </div>
@@ -39,7 +39,7 @@ int1 = setInterval(
     document.querySelector('textarea').focus()
     aw = document.getElementById("talk_topic").value;
     a = document.getElementById("talk_topic").value.length;
-    if (b===a){
+    if (b===a && a != 0){
        document.getElementById("my_talk_form").submit();
     }else{
       b=a;

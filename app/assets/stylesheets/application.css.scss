@@ -14,16 +14,29 @@
  *= require_self
  */
 
- @media screen and (max-width: 1200px) {
-   a, textarea {
-     font-size: 2em;
+ @media screen and (max-width: 400px) {
+   a, input {
+     font-size: 1.5em;
    }
  }
 
 a {
+  font-size: 1.5em;
   text-decoration: none !important;
 }
 
-textarea {
+input {
   width: 100%;
+}
+
+
+
+textarea, input{
+    outline: none;
+    background-color: transparent;
+    border: none;
+}
+
+*:focus {
+    outline: none;
 }

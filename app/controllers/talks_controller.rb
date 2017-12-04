@@ -6,15 +6,16 @@ class TalksController < ApplicationController
   def index
     session[:page] = 'index'
     @talks=[]
-    @talks << Talk.order(id: :desc).limit(7)
-    @talks << Talk.where(created_at: Time.now-0.5.hour..Time.now-0.25.hour).order(id: :desc).limit(3)
-    @talks << Talk.where(created_at: Time.now-1.hour..Time.now-0.5.hour).order(id: :desc).limit(3)
-    @talks << Talk.where(created_at: Time.now-2.hour..Time.now-1.hour).order(id: :desc).limit(3)
-    @talks << Talk.where(created_at: Time.now-2.day..Time.now-1.day).order(id: :desc).limit(3)
-    @talks << Talk.where(created_at: Time.now-2.month..Time.now-1.month).order(id: :desc).limit(3)
-    @talks << Talk.where(created_at: Time.now-4.month..Time.now-3.month).order(id: :desc).limit(3)
-    @talks << Talk.where(created_at: Time.now-7.month..Time.now-6.month).order(id: :desc).limit(3)
-    @talks << Talk.where(created_at: Time.now-2.year..Time.now-1.year).order(id: :desc).limit(3)
+    @talks << Talk.order(id: :desc).limit(10).sample(3)
+    @talks << Talk.where(created_at: Time.now-0.5.hour..Time.now-0.25.hour).order(id: :desc).sample(3)
+    @talks << Talk.where(created_at: Time.now-1.hour..Time.now-0.5.hour).order(id: :desc).sample(3)
+    @talks << Talk.where(created_at: Time.now-2.hour..Time.now-1.hour).order(id: :desc).sample(3)
+    @talks << Talk.where(created_at: Time.now-2.day..Time.now-1.day).order(id: :desc).sample(3)
+    @talks << Talk.where(created_at: Time.now-1.week-1.day..Time.now-1.week).order(id: :desc).sample(3)
+    @talks << Talk.where(created_at: Time.now-1.month-1.day..Time.now-1.month).order(id: :desc).sample(3)
+    @talks << Talk.where(created_at: Time.now-3.month-1.day..Time.now-3.month).order(id: :desc).sample(3)
+    @talks << Talk.where(created_at: Time.now-6.month-1.day..Time.now-6.month).order(id: :desc).sample(3)
+    @talks << Talk.where(created_at: Time.now-1.year-1.day..Time.now-1.year).order(id: :desc).sample(3)
   end
 
   # GET /talks/1

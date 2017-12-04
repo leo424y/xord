@@ -1,6 +1,6 @@
 <%= form_with(model: talk, local: true, id: 'my_talk_form') do |form| %>
   <div class="field">
-    <%= form.text_field :topic, id: :talk_topic, autofocus: true %>
+    <%= form.text_field :topic, id: :talk_topic, autocomplete: "off", autofocus: true  %>
   </div>
 
   <div class="field" hidden>

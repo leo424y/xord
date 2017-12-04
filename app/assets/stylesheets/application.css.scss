@@ -15,7 +15,7 @@
  */
 
  @media screen and (max-width: 400px) {
-   a, input {
+   a {
      font-size: 1.5em;
    }
  }
@@ -27,6 +27,7 @@ a {
 
 input {
   width: 100%;
+  font-size: 4em;
 }
 
 

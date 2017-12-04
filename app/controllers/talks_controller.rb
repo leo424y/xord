@@ -7,16 +7,12 @@ class TalksController < ApplicationController
     session[:page] = 'index'
     @talks=[]
     @talks << Talk.order(id: :desc).first(3)
-    @talks << Talk.order(id: :desc).limit(20).sample(1)
-    @talks << Talk.where(created_at: Time.now-0.5.hour..Time.now-0.25.hour).order(id: :desc).sample(3)
-    @talks << Talk.where(created_at: Time.now-1.hour..Time.now-0.5.hour).order(id: :desc).sample(3)
-    @talks << Talk.where(created_at: Time.now-2.hour..Time.now-1.hour).order(id: :desc).sample(3)
-    @talks << Talk.where(created_at: Time.now-2.day..Time.now-1.day).order(id: :desc).sample(3)
-    @talks << Talk.where(created_at: Time.now-1.week-1.day..Time.now-1.week).order(id: :desc).sample(3)
-    @talks << Talk.where(created_at: Time.now-1.month-1.day..Time.now-1.month).order(id: :desc).sample(3)
-    @talks << Talk.where(created_at: Time.now-3.month-1.day..Time.now-3.month).order(id: :desc).sample(3)
-    @talks << Talk.where(created_at: Time.now-6.month-1.day..Time.now-6.month).order(id: :desc).sample(3)
-    @talks << Talk.where(created_at: Time.now-1.year-1.day..Time.now-1.year).order(id: :desc).sample(3)
+
+    hour_groups = [0.25, 0.5, 1, 2, 4, 8]
+    hour_groups.each {|t| @talks << Talk.where(created_at: Time.now-t.hour-1.hour..Time.now-t.hour).order(id: :desc).sample(1)}
+
+    day_groups = [1.day, 1.week, 1.month, 3.month, 6.month, 1.year]
+    day_groups.each {|t| @talks << Talk.where(created_at: Time.now-t-1.day..Time.now-t).order(id: :desc).sample(3)}
   end
 
   # GET /talks/1
@@ -26,7 +22,7 @@ class TalksController < ApplicationController
 
   # GET /talks/new
   def new
-		@parent_ids = []
+    @parent_ids = []
     @talk = Talk.new
     session[:page] = 'new'
   end

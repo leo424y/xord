@@ -2,7 +2,7 @@
 <% @talks.each do |talk| %>
 
     <% talk.each do |talk| %>
-        <p><%= link_to talk.topic, new_talk_path(talk_from_id: talk.id, talk_from: talk.topic), autofocus: true %></p>
+        <p><%= link_to talk.topic, new_talk_path(f: talk.id), autofocus: true %></p>
     <% end %>
 <br />
 <% end %>

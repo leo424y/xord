@@ -26,6 +26,7 @@ class TalksController < ApplicationController
 
   # GET /talks/new
   def new
+		@parent_ids = []
     @talk = Talk.new
     session[:page] = 'new'
   end

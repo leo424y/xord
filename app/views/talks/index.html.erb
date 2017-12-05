@@ -2,7 +2,7 @@
 <% @talks.each do |talk| %>
 
     <% talk.each do |talk| %>
-        <p><%= link_to talk.topic, only_one_english_word(talk.topic) ? "https://simple.wikipedia.org/wiki/#{talk.topic}" : new_talk_path(f: talk.id) %></p>
+        <p><%= link_to talk.topic, only_one_english_word(talk) %></p>
     <% end %>
 <br />
 <% end %>

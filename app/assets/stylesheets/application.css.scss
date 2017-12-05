@@ -14,23 +14,17 @@
  *= require_self
  */
 
- @media screen and (max-width: 400px) {
-   a {
-     font-size: 1.5em;
-   }
- }
+ // @media screen and (max-width: 400px) {
+ // }
 
 a, p {
-  font-size: 1.5em;
   text-decoration: none !important;
 }
 
 textarea {
   width: 100%;
-  font-size: 4em;
+  font-size: 1.5em;
 }
-
-
 
 textarea, input{
     outline: none;
@@ -42,12 +36,11 @@ textarea, input{
     outline: none;
 }
 
-
 input[type="range"]{
   -webkit-appearance: none;
-  overflow:hidden;     /* 限定範圍 */
-  width:200px;
-  height:100px;
-  outline : none;      /* 避免點選會有藍線或虛線 */
-  background:none;
+  overflow: hidden;     /* 限定範圍 */
+  width: 100%;
+  height: 2em;
+  outline: none;      /* 避免點選會有藍線或虛線 */
+  background: none;
 }

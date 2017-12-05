@@ -14,6 +14,7 @@ var aw='';
 var b=0;
 
 var int1;
+var timer=0;
 clearInterval(int1);
 int1 = setInterval(
 
@@ -21,10 +22,13 @@ int1 = setInterval(
   {
     aw = document.getElementById("talk_topic").value;
     a = document.getElementById("talk_topic").value.length;
-    if (a!=0 && b===a){
-       document.getElementById("my_talk_form").submit();
+    if (a!==b){timer=0}
+    if (a!=0 && timer>2){
+      timer=0
+      document.getElementById("my_talk_form").submit();
     }else{
       b=a;
+      timer=timer+0.5
     }
-  }, 1500);
+  }, 500);
 </script>

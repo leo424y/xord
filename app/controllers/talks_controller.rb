@@ -35,9 +35,8 @@ class TalksController < ApplicationController
   # POST /talks.json
   def create
     @talk = Talk.new(talk_params)
-
     respond_to do |format|
-      if @talk.save
+      if create_new_talk(@talk)
         format.html { redirect_to talks_path, notice: 'Talk was successfully created.' }
         format.json { render :show, status: :created, location: @talk }
       else
@@ -79,10 +78,21 @@ class TalksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def talk_params
-    if	session[:page] == 'new'
-      params.require(:talk).permit(:topic, :from)
-    elsif session[:page] == 'index'
-      params.permit(:topic, :from)
+      if	session[:page] == 'new'
+        params.require(:talk).permit(:topic, :from)
+      elsif session[:page] == 'index'
+        params.permit(:topic, :from)
+      end
     end
+
+    def create_new_talk(talk)
+      if talk_params[:topic].include? "\n"
+        talk_topics = talk_params[:topic].split("\n")
+        talk_topics.each do |t|
+          Talk.create(topic: t, from: talk[:from])
+        end
+      else
+         talk.save
+      end
     end
 end

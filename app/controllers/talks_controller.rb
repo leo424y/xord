@@ -7,12 +7,13 @@ class TalksController < ApplicationController
     session[:page] = 'index'
     @talks=[]
     @parent_ids = []
-    @talks << Talk.order(id: :desc).first(3)
+    @talks << Talk.last(1)
 
-    hour_groups = [0.25, 0.5, 1, 2, 4, 8]
+    hour_groups = [1, 2, 4, 8]
     hour_groups.each {|t| @talks << Talk.where(created_at: Time.now-t.hour-1.hour..Time.now-t.hour).order(id: :desc).sample(1)}
 
-    day_groups = [1.day, 1.week, 1.month, 3.month, 6.month, 1.year]
+    day_groups = [1.day, 1.week, 1.month]
+     # 3.month, 6.month, 1.year]
     day_groups.each {|t| @talks << Talk.where(created_at: Time.now-t-1.day..Time.now-t).order(id: :desc).sample(3)}
   end
 

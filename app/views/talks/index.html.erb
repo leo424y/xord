@@ -3,6 +3,5 @@
     <% talk.each do |talk| %>
         <p><%= link_to(talk.topic, only_one_english_word(talk)) %></p>
     <% end %>
-<br />
 <% end %>
 <!-- , style: "font-size: #{(parent_talk(talk.id).count-1)+24}px" -->

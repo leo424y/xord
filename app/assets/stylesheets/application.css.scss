@@ -32,10 +32,6 @@ textarea, input{
     border: none;
 }
 
-*:focus {
-    outline: none;
-}
-
 input[type="range"]{
   -webkit-appearance: none;
   overflow: hidden;     /* 限定範圍 */

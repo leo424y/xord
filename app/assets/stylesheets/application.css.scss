@@ -39,8 +39,13 @@ textarea, input{
 input[type="range"]{
   -webkit-appearance: none;
   overflow: hidden;     /* 限定範圍 */
-  width: 100%;
+  width: 90%;
   height: 2em;
   outline: none;      /* 避免點選會有藍線或虛線 */
   background: none;
+}
+
+input.fixed {
+  position: fixed;
+  bottom: 0;
 }

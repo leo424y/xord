@@ -6,7 +6,7 @@ class TalksController < ApplicationController
   def index
     session[:page] = 'index'
     @talks=[]
-		@parent_ids = []
+    @parent_ids = []
     @talks << Talk.order(id: :desc).first(3)
 
     hour_groups = [0.25, 0.5, 1, 2, 4, 8]
@@ -80,9 +80,9 @@ class TalksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def talk_params
       if	session[:page] == 'new'
-        params.require(:talk).permit(:topic, :from)
+        params.require(:talk).permit(:topic, :from, :rate)
       elsif session[:page] == 'index'
-        params.permit(:topic, :from)
+        params.permit(:topic, :from, :rate)
       end
     end
 

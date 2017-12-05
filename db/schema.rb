@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171203101704) do
+ActiveRecord::Schema.define(version: 20171205095833) do
 
   create_table "talks", force: :cascade do |t|
     t.string "topic"
     t.string "from"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rate"
   end
 
 end

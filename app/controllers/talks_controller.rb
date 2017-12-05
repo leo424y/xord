@@ -6,6 +6,7 @@ class TalksController < ApplicationController
   def index
     session[:page] = 'index'
     @talks=[]
+		@parent_ids = []
     @talks << Talk.order(id: :desc).first(3)
 
     hour_groups = [0.25, 0.5, 1, 2, 4, 8]

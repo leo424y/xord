@@ -6,7 +6,9 @@ module TalksHelper
       @parent_ids << parent_id
       parent_talk(parent_id)
     else
-      Talk.where(id: @parent_ids).pluck(:id, :topic)
+      ids = @parent_ids
+      @parent_ids =[]
+      Talk.where(id: ids).pluck(:id, :topic)
     end
   end
 end

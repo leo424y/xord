@@ -1,8 +1,7 @@
 <%= render 'form', talk: @talk %>
 <% @talks.each do |talk| %>
-
     <% talk.each do |talk| %>
-        <p><%= link_to talk.topic, only_one_english_word(talk) %></p>
+        <p><%= link_to(talk.topic, only_one_english_word(talk), style: "font-size: #{(parent_talk(talk.id).count-1)+24}px") %></p>
     <% end %>
 <br />
 <% end %>

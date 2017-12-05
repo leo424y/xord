@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20171205095833) do
     t.string "from"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "rate"
+    t.integer "rate", default: 100
   end
 
 end

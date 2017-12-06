@@ -1,7 +1,9 @@
 <%= form_with(model: talk, local: true, id: 'my_talk_form') do |form| %>
   <%= form.range_field :rate, min: 0, max: 200, class: 'fixed' %>
+  <input type="checkbox" id='open_edit'/>
+
   <div class="field">
-    <%= form.text_area :topic, id: :talk_topic, autocomplete: "off", autofocus: true, class: 'speech'  %>
+    <%= form.text_area :topic, id: :talk_topic, autocomplete: "off", autofocus: true, class: 'speech', readonly: true  %>
   </div>
 
   <div class="field" hidden>
@@ -63,4 +65,14 @@ int1 = setInterval(
     // auto restart
     recognition.start();
   }
+
+  var checkbox = document.querySelector("#open_edit");
+
+  checkbox.addEventListener( 'change', function() {
+      if(this.checked) {
+        document.getElementById("talk_topic").readOnly = false;
+      } else {
+        document.getElementById("talk_topic").readOnly = true;
+      }
+  });
 </script>

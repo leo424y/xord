@@ -40,6 +40,80 @@ input[type="range"]{
   background: none;
 }
 
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  position: relative;    /* 設為相對位置，為了前後區塊的絕對位置而設定 */
+  width:10px;
+  height:10px;
+  background:#f22;
+  border-radius:50%;
+  transition:.2s;        /* 點選放大時候的漸變時間 */
+}
+
+input[type="range"]::-webkit-slider-thumb:before,
+input[type="range"]::-webkit-slider-thumb:after
+{
+  position: absolute;
+  top: 3px;
+  width: 2000px;          /* 長度很長沒關係，因為剛剛有用 overflow:hidden 了 */
+  height: 4px;
+  content:"";
+  pointer-events: none;   /* 讓滑鼠可以點擊穿透偽元素，不然會點不到下面 */
+  transition:.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:before{
+  left: -1997px;
+  background: #f22;
+}
+input[type="range"]::-webkit-slider-thumb:after {
+  left: 10px;
+  background: #edc;
+}
+input[type="range"]:active::-webkit-slider-thumb:before,
+input[type="range"]:active::-webkit-slider-thumb:after
+{
+  top: 6px;
+}
+
+input[type="range"]:active::-webkit-slider-thumb{
+  width:16px;
+  height:16px;
+}
+
+input[type="range"]:active::-webkit-slider-thumb:after {
+  left: 16px;
+}
+
+input[type="range"]::-moz-range-track{
+  height:4px;
+  background:#edc;
+  border:none;
+}
+
+input[type="range"]::-moz-range-thumb{
+  width:10px;
+  height:10px;
+  background:#f22;
+  border:none;
+  border-radius:50%;
+}
+
+input[type="range"]::-moz-range-thumb:hover,input[type="range"]:active::-moz-range-thumb{
+  width:16px;
+  height:16px;
+}
+
+input[type="range"]::-moz-range-progress{
+  height:4px;
+  background:#f22;
+}
+
+input[type="range"]::-moz-focus-outer{
+  border:none;    /* 去除 focus 時候的外框虛線 */
+}
+
+
 input.fixed {
   position: fixed;
   bottom: 0;

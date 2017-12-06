@@ -2,5 +2,6 @@
 <p>
   <% parent_talk(params[:f]).each_with_index do |f, index| %>
     <%= index==parent_talk(params[:f]).length-1 ? f[1] : link_to( f[1], new_talk_path(f: f[0]) )  %>
+    <br>
   <% end %>
 </p>

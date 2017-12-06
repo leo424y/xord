@@ -24,12 +24,11 @@ a, p {
 textarea {
   width: 100%;
   font-size: 1.5em;
-}
-
-textarea, input{
-    outline: none;
-    background-color: transparent;
-    border: none;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  overflow: hidden;
+  resize: none;
 }
 
 input[type="range"]{

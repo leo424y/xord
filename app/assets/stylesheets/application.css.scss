@@ -94,7 +94,7 @@ input[type="range"]::-moz-range-track{
 input[type="range"]::-moz-range-thumb{
   width:10px;
   height:10px;
-  background:#f22;
+  background:#922;
   border:none;
   border-radius:50%;
 }
@@ -106,7 +106,7 @@ input[type="range"]::-moz-range-thumb:hover,input[type="range"]:active::-moz-ran
 
 input[type="range"]::-moz-range-progress{
   height:4px;
-  background:#f22;
+  background:#922;
 }
 
 input[type="range"]::-moz-focus-outer{

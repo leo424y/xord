@@ -35,32 +35,32 @@ int1 = setInterval(
 
 
 
-  // // speech
-  // var text = document.querySelector(".speech");
-  // var startBtn = document.querySelector(".start");
-  //
-  // var recognition = new webkitSpeechRecognition();
-  // // set params
-  // recognition.continuous = false;
-  // recognition.lang = 'zh-TW';
-  // recognition.interimResults = true;
-  //
-  // // start immediately
-  // // recognition.start();
+  // speech
+  var text = document.querySelector(".speech");
+  var startBtn = document.querySelector(".start");
+
+  var recognition = new webkitSpeechRecognition();
+  // set params
+  recognition.continuous = false;
+  recognition.lang = 'zh-TW';
+  recognition.interimResults = true;
+
+  // start immediately
   // recognition.start();
-  // recognition.onresult = function(event) {
-  //   var result = event.results[event.results.length - 1];
-  //   text.innerHTML = result[result.length - 1 ].transcript;
-  // }
-  //
-  // // speech error handling
-  // recognition.onerror = function(event){
-  //   console.log('error', event);
-  // }
-  //
-  // recognition.onend = function() {
-  //   console.log("end");
-  //   // auto restart
-  //   recognition.start();
-  // }
+  recognition.start();
+  recognition.onresult = function(event) {
+    var result = event.results[event.results.length - 1];
+    text.innerHTML = result[result.length - 1 ].transcript;
+  }
+
+  // speech error handling
+  recognition.onerror = function(event){
+    console.log('error', event);
+  }
+
+  recognition.onend = function() {
+    console.log("end");
+    // auto restart
+    recognition.start();
+  }
 </script>

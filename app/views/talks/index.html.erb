@@ -1,6 +1,8 @@
 <!-- <p id="notice"><%# notice %></p>
 <p id="notice">Use Chrome & talk to me start with <font color='red'><%# @shiritori_last %></font></p> -->
 <%= render 'form', talk: @talk %>
+<%= link_to "_", talks_path(format: "csv") %>
+
 <% @talks.each do |talk| %>
     <% talk.each do |talk| %>
         <p><%= link_to(talk.topic, link_by_topic(talk)) %></p>

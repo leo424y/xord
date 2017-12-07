@@ -7,16 +7,24 @@ class TalksController < ApplicationController
     session[:page] = 'index'
     @talks=[]
     @parent_ids = []
-    @talks << Talk.last(1)
-    @talks << Talk.order('id DESC').limit(31).where('topic LIKE ? or topic LIKE  ?', '%嗎%', '%呢%').sample(1)
-    hour_groups = [1, 2, 4, 8]
-    hour_groups.each {|t| @talks << Talk.where(created_at: Time.now-t.hour-1.hour..Time.now-t.hour).order(id: :desc).sample(1)}
-
-    day_groups = [1.day, 2.day, 4.day, 1.week]
-     # , 2.week, 1.month, 3.month, 6.month, 1.year]
-    day_groups.each {|t| @talks << Talk.where(created_at: Time.now-t-1.day..Time.now-t).order(id: :desc).sample(3)}
+    @talks << Talk.last(4)
+    # @talks << Talk.order('id DESC').limit(31).where('topic LIKE ? or topic LIKE  ?', '%嗎%', '%呢%').sample(1)
+    # hour_groups = [1, 2, 4, 8]
+    # hour_groups.each {|t| @talks << Talk.where(created_at: Time.now-t.hour-1.hour..Time.now-t.hour).order(id: :desc).sample(1)}
+    #
+    # day_groups = [1.day, 2.day, 4.day, 1.week]
+    #  # , 2.week, 1.month, 3.month, 6.month, 1.year]
+    # day_groups.each {|t| @talks << Talk.where(created_at: Time.now-t-1.day..Time.now-t).order(id: :desc).sample(3)}
 
     @shiritori_last = Talk.last[:topic].split('').last
+
+
+    @all_talks = Talk.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @all_talks.to_csv, filename: "users-#{Date.today}.csv" }
+    end
   end
 
   # GET /talks/1

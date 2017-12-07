@@ -15,6 +15,8 @@ class TalksController < ApplicationController
     day_groups = [1.day, 2.day, 4.day, 1.week]
      # , 2.week, 1.month, 3.month, 6.month, 1.year]
     day_groups.each {|t| @talks << Talk.where(created_at: Time.now-t-1.day..Time.now-t).order(id: :desc).sample(3)}
+
+    @shiritori_last = Talk.last[:topic].split('').last
   end
 
   # GET /talks/1
@@ -27,6 +29,7 @@ class TalksController < ApplicationController
     @parent_ids = []
     @talk = Talk.new
     session[:page] = 'new'
+    @shiritori_last = Talk.find(params['f'])[:topic].split('').last
   end
 
   # GET /talks/1/edit
@@ -37,7 +40,6 @@ class TalksController < ApplicationController
   # POST /talks.json
   def create
     @talk = Talk.new(talk_params)
-
     respond_to do |format|
       if shiritori(talk_params)
         create_new_talk(@talk)

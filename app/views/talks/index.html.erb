@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
+<p id="notice">Use Chrome & talk to me start with <font color='red'><%= @shiritori_last %></font></p>
 <%= render 'form', talk: @talk %>
 <% @talks.each do |talk| %>
     <% talk.each do |talk| %>
         <p><%= link_to(talk.topic, link_by_topic(talk)) %></p>
+        <p><%# link_to("#{(talk.topic.split('')-[talk.topic.split('').last]).join('')}<font color='red'>#{talk.topic.split('').last}</font>".html_safe, link_by_topic(talk)) %></p>
     <% end %>
 <% end %>
 <!-- , style: "font-size: #{(parent_talk(talk.id).count-1)+24}px" -->

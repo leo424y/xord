@@ -104,9 +104,9 @@ class TalksController < ApplicationController
 
     def shiritori(talk)
       if talk[:from].present?
-        talk[:topic].split('').first == Talk.find(talk[:from])[:topic].split('').last
+        talk[:topic].split('').first.upcase == Talk.find(talk[:from])[:topic].split('').last.upcase
       else
-        talk[:topic].split('').first == Talk.last[:topic].split('').last
+        talk[:topic].split('').first.upcase == Talk.last[:topic].split('').last.upcase
       end
     end
 end

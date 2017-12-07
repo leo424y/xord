@@ -41,8 +41,8 @@ class TalksController < ApplicationController
   def create
     @talk = Talk.new(talk_params)
     respond_to do |format|
-      if shiritori(talk_params)
-        create_new_talk(@talk)
+      if create_new_talk(@talk)
+        # shiritori(talk_params)
         format.html { redirect_to talks_path, notice: '⭕' }
         format.json { render :show, status: :created, location: @talk }
       else

@@ -37,12 +37,14 @@ class TalksController < ApplicationController
   # POST /talks.json
   def create
     @talk = Talk.new(talk_params)
+
     respond_to do |format|
-      if create_new_talk(@talk)
-        format.html { redirect_to talks_path, notice: 'Talk was successfully created.' }
+      if shiritori(talk_params)
+        create_new_talk(@talk)
+        format.html { redirect_to talks_path, notice: '⭕' }
         format.json { render :show, status: :created, location: @talk }
       else
-        format.html { render :new }
+        format.html { redirect_to talks_path, notice: '❌'  }
         format.json { render json: @talk.errors, status: :unprocessable_entity }
       end
     end
@@ -95,6 +97,14 @@ class TalksController < ApplicationController
         end
       else
          talk.save
+      end
+    end
+
+    def shiritori(talk)
+      if talk[:from].present?
+        talk[:topic].split('').first == Talk.find(talk[:from])[:topic].split('').last
+      else
+        talk[:topic].split('').first == Talk.last[:topic].split('').last
       end
     end
 end

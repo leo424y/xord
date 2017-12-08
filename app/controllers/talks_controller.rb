@@ -7,7 +7,7 @@ class TalksController < ApplicationController
     session[:page] = 'index'
     @talks=[]
     @parent_ids = []
-    @talks << Talk.order(id: :desc).first(3)
+    @talks << Talk.order(id: :desc).first(1)
     # @talks << Talk.order('id DESC').limit(31).where('topic LIKE ? or topic LIKE  ?', '%嗎%', '%呢%').sample(1)
     # hour_groups = [1, 2, 4, 8]
     # hour_groups.each {|t| @talks << Talk.where(created_at: Time.now-t.hour-1.hour..Time.now-t.hour).order(id: :desc).sample(1)}
@@ -49,7 +49,8 @@ class TalksController < ApplicationController
   def create
     @talk = Talk.new(talk_params)
     respond_to do |format|
-      if create_new_talk(@talk)
+      if @talk.save
+        # create_new_talk(@talk)
         # shiritori(talk_params)
         format.html { redirect_to talks_path, notice: '⭕' }
         format.json { render :show, status: :created, location: @talk }
@@ -58,6 +59,11 @@ class TalksController < ApplicationController
         format.json { render json: @talk.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def add
+    Talk.create(topic: params[:t])
+    redirect_to talks_path
   end
 
   # PATCH/PUT /talks/1
@@ -117,4 +123,5 @@ class TalksController < ApplicationController
         talk[:topic].split('').first.upcase == Talk.last[:topic].split('').last.upcase
       end
     end
+
 end

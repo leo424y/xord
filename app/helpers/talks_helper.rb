@@ -2,6 +2,8 @@ module TalksHelper
   def wiki(word)
     require 'json'
     require 'open-uri'
+    require 'net/http'
+
     api_url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=#{word}"
     uri = URI.parse(api_url)
 

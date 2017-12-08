@@ -7,7 +7,7 @@ class TalksController < ApplicationController
     session[:page] = 'index'
     @talks=[]
     @parent_ids = []
-    @talks << Talk.last(4)
+    @talks << Talk.order(id: :desc).first(3)
     # @talks << Talk.order('id DESC').limit(31).where('topic LIKE ? or topic LIKE  ?', '%嗎%', '%呢%').sample(1)
     # hour_groups = [1, 2, 4, 8]
     # hour_groups.each {|t| @talks << Talk.where(created_at: Time.now-t.hour-1.hour..Time.now-t.hour).order(id: :desc).sample(1)}

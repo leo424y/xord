@@ -43,9 +43,10 @@ int1 = setInterval(
 
   var recognition = new webkitSpeechRecognition();
   // set params
-  recognition.continuous = true;
+  recognition.continuous = false;
   // recognition.lang = 'zh-TW';
-  recognition.lang = 'en-US';
+  // recognition.lang = 'en-US';
+  recognition.lang = 'en';
   recognition.interimResults = true;
 
   // start immediately

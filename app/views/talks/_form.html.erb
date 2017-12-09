@@ -3,8 +3,7 @@
   <!-- <input type="checkbox" id='open_edit'/> -->
 
   <div class="field">
-    <%= form.text_area :topic, id: :talk_topic, autocomplete: "off", class: 'speech' %>
-    <!-- autofocus: true,  -->
+    <%= form.text_area :topic, id: :talk_topic, autocomplete: "off", class: 'speech', autofocus: true %>
   </div>
 
   <div class="field" hidden>
@@ -30,6 +29,7 @@ int1 = setInterval(
     if (a!=0 && timer>1){
       timer=-1000
       document.getElementById("my_talk_form").submit();
+      document.getElementById("talk_topic").readOnly = true;
     }else{
       b=a;
       timer=timer+0.5

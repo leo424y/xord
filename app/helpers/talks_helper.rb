@@ -1,4 +1,8 @@
 module TalksHelper
+  def page_title
+    true
+  end
+
   def wiki(word)
     require 'json'
     require 'open-uri'

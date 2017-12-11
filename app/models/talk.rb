@@ -1,6 +1,7 @@
 require 'csv'
 
 class Talk < ApplicationRecord
+  validates_presence_of :topic
   def self.to_csv
     attributes = %w{topic}
 

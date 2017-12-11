@@ -10,10 +10,10 @@ class TalksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_talk_url
-    assert_response :success
-  end
+  # test "should get new" do
+  #   get new_talk_url
+  #   assert_response :success
+  # end
 
   # test "should create talk" do
   #   assert_difference('Talk.count') do

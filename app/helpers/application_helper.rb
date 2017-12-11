@@ -1,6 +1,6 @@
 module ApplicationHelper
   def link_by_topic(talk)
-    new_talk_path(f: talk.id)
+    # new_talk_path(f: talk.id)
 
     # if (talk.topic.length == talk.topic.bytes.to_a.length) && (talk.topic.length == talk.topic.gsub(/[[:space:]]/, '').length)
     #   "https://simple.wikipedia.org/wiki/#{talk.topic}"

@@ -4,8 +4,15 @@ module TalksHelper
     require 'open-uri'
     require 'net/http'
 
-    api_url = "https://simple.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=#{word}"
-    uri = URI.parse(api_url)
+    if word == word.gsub(/[^\w]/, '_')
+      lang = 'simple'
+    else
+      lang = 'zh'
+    end
+    api_url = "https://#{lang}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=#{word}"
+
+
+    uri = URI.parse(URI.escape(api_url))
 
     header = {'Content-Type': 'application/json'}
 

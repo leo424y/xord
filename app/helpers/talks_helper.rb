@@ -44,7 +44,7 @@ module TalksHelper
   end
 
   def split_to_words(word)
-    wiki_words = wiki(word).gsub(/[\s?*&<>《》]/ ,"")
+    wiki_words = wiki(word)
     if lang_is(word) == 'zh' && wiki_words.present?
       require 'ckip_client'
       CKIP.segment( wiki_words, 'neat').split('　')

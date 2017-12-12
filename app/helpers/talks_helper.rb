@@ -35,6 +35,8 @@ module TalksHelper
     lang = lang_is(word)
 
     if type == 'json'
+    require 'ropencc'
+    word = Ropencc.conv('t2s.json', word)
     "https://#{lang}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=#{word}"
     elsif type == 'url'
       "https://#{lang}.wikipedia.org/wiki/#{word}"
@@ -42,12 +44,12 @@ module TalksHelper
   end
 
   def split_to_words(word)
-    wiki_word = wiki(word)
-    if lang_is(word) == 'zh'
+    wiki_words = wiki(word).gsub(/[\s?*&<>《》]/ ,"")
+    if lang_is(word) == 'zh' && wiki_words.present?
       require 'ckip_client'
-      CKIP.segment( wiki_word, 'neat').split('　')
+      CKIP.segment( wiki_words, 'neat').split('　')
     else
-      wiki_word.split(' ')
+      wiki_words.split(' ')
     end
   end
 
@@ -65,7 +67,7 @@ module TalksHelper
     if word == word.gsub(/[^\w]/, '_')
       'en'
       # 'simple'
-    else
+    elsif (word != word.gsub(/[^\w]/, '_'))
       'zh'
     end
   end

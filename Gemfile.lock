@@ -184,6 +184,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    ropencc (0.0.6)
+      ffi (~> 1.0)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -288,6 +290,7 @@ DEPENDENCIES
   pg
   puma (~> 3.7)
   rails (~> 5.1.4)
+  ropencc
   rspec-rails (~> 3.6)
   sass-rails (~> 5.0)
   selenium-webdriver

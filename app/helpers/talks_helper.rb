@@ -5,7 +5,8 @@ module TalksHelper
     require 'net/http'
 
     if word == word.gsub(/[^\w]/, '_')
-      lang = 'simple'
+      lang = 'en'
+      # lang = 'simple'
     else
       lang = 'zh'
     end

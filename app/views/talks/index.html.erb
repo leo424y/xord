@@ -2,7 +2,7 @@
 <p id="notice">Use Chrome & talk to me start with <font color='red'><%# @shiritori_last %></font></p> -->
 <%= render 'form', talk: @talk %>
 <%# link_to "_", talks_path(format: "csv") %>
-
+<%# column_chart Talk.group_by_hour_of_day(:created_at, format: "%l %P").count %>
 <% @talks.each do |talk| %>
     <% talk.each do |talk| %>
         <%= link_to((fa_icon "wikipedia-w"), wiki_url(talk.topic, 'url')) %>

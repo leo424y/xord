@@ -51,6 +51,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    chartkick (2.2.5)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.2)
@@ -86,6 +87,8 @@ GEM
     formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -269,11 +272,13 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capybara (~> 2.13)
+  chartkick
   coffee-rails (~> 4.2)
   coveralls
   factory_bot
   factory_bot_rails
   font-awesome-rails
+  groupdate
   guard-rspec
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

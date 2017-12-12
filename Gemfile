@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "font-awesome-rails"
+
 gem "lograge"
 
 gem 'guard-rspec', require: false

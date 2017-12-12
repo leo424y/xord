@@ -4,16 +4,7 @@ module TalksHelper
     require 'open-uri'
     require 'net/http'
 
-    if word == word.gsub(/[^\w]/, '_')
-      lang = 'en'
-      # lang = 'simple'
-    else
-      lang = 'zh'
-    end
-    api_url = "https://#{lang}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=#{word}"
-
-
-    uri = URI.parse(URI.escape(api_url))
+    uri = URI.parse(URI.escape(wiki_url(word, 'json')))
 
     header = {'Content-Type': 'application/json'}
 
@@ -37,6 +28,20 @@ module TalksHelper
       ids = @parent_ids
       @parent_ids =[]
       Talk.where(id: ids).pluck(:id, :topic)
+    end
+  end
+
+  def wiki_url(word, type)
+    if word == word.gsub(/[^\w]/, '_')
+      lang = 'en'
+      # lang = 'simple'
+    else
+      lang = 'zh'
+    end
+    if type == 'json'
+    "https://#{lang}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=#{word}"
+    elsif type == 'url'
+      "https://#{lang}.wikipedia.org/wiki/#{word}"
     end
   end
 end

@@ -5,6 +5,7 @@
 
 <% @talks.each do |talk| %>
     <% talk.each do |talk| %>
+        <%= link_to((fa_icon "wikipedia-w"), wiki_url(talk.topic, 'url')) %>
         <%= link_to("[#{talk.topic}]  ", new_talk_path(f: talk.id)) %>
         <% links = wiki(talk.topic).split(' ').map{ |x| x.gsub(/[,.():{}'"?!]/ ,"").singularize } %>
         <% wiki(talk.topic).split(' ').each_with_index do |x, index| %>

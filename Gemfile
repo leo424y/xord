@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'ckip_client'
+
 gem "chartkick"
 gem 'groupdate'
 

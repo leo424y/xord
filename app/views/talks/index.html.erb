@@ -2,13 +2,13 @@
 <p id="notice">Use Chrome & talk to me start with <font color='red'><%# @shiritori_last %></font></p> -->
 <%= render 'form', talk: @talk %>
 <%# link_to "_", talks_path(format: "csv") %>
-<%# column_chart Talk.group_by_hour_of_day(:created_at, format: "%l %P").count %>
+<%# column_chart Talk.group_by_hour_of_day(:created_at, format: "%l %P").count , download: true %>
 <% @talks.each do |talk| %>
     <% talk.each do |talk| %>
         <%= link_to((fa_icon "wikipedia-w"), wiki_url(talk.topic, 'url')) %>
         <%= link_to("[#{talk.topic}]  ", new_talk_path(f: talk.id)) %>
-        <% links = wiki(talk.topic).split(' ').map{ |x| x.gsub(/[,.():{}'"?!]/ ,"").singularize } %>
-        <% wiki(talk.topic).split(' ').each_with_index do |x, index| %>
+        <% links = split_to_links(talk.topic) %>
+        <% split_to_words(talk.topic).each_with_index do |x, index| %>
             <%= link_to(x, add_talks_path(t: links[index]) ) %>
         <% end %>
         <p><%# link_to("#{(talk.topic.split('')-[talk.topic.split('').last]).join('')}<font color='red'>#{talk.topic.split('').last}</font>".html_safe, link_by_topic(talk)) %></p>

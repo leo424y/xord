@@ -32,16 +32,41 @@ module TalksHelper
   end
 
   def wiki_url(word, type)
-    if word == word.gsub(/[^\w]/, '_')
-      lang = 'en'
-      # lang = 'simple'
-    else
-      lang = 'zh'
-    end
+    lang = lang_is(word)
+
     if type == 'json'
     "https://#{lang}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=#{word}"
     elsif type == 'url'
       "https://#{lang}.wikipedia.org/wiki/#{word}"
+    end
+  end
+
+  def split_to_words(word)
+    wiki_word = wiki(word)
+    if lang_is(word) == 'zh'
+      require 'ckip_client'
+      CKIP.segment( wiki_word, 'neat').split('　')
+    else
+      wiki_word.split(' ')
+    end
+  end
+
+  def split_to_links(word)
+    if lang_is(word) == 'zh'
+      split_to_words(word).map{ |x| x.gsub(/[\r\n，。；·、]/ ,"") }
+    else
+      split_to_words(word).map{ |x| x.gsub(/[,.():{}'"?!]/ ,"").singularize }
+    end
+  end
+
+
+
+  def lang_is(word)
+    if word == word.gsub(/[^\w]/, '_')
+      'en'
+      # 'simple'
+    else
+      'zh'
     end
   end
 end

@@ -35,8 +35,8 @@ module TalksHelper
     lang = lang_is(word)
 
     if type == 'json'
-    require 'ropencc'
-    word = Ropencc.conv('t2s.json', word)
+    # require 'ropencc'
+    # word = Ropencc.conv('t2s.json', word)
     "https://#{lang}.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=#{word}"
     elsif type == 'url'
       "https://#{lang}.wikipedia.org/wiki/#{word}"

@@ -20,6 +20,9 @@ var sw='';
 
 var int1;
 var timer=0;
+
+var delayInMilliseconds = 2000; //1 second
+
 clearInterval(int1);
 int1 = setInterval(
 
@@ -35,12 +38,13 @@ int1 = setInterval(
       document.getElementById("my_talk_form").submit();
       document.getElementById("talk_topic").readOnly = true;
     }
-    else if (s>4 && timer>1){
+    else if (s>0 && timer>1){
       timer=-1000
-
-      document.getElementById("talk_topic").value = sw;
-      document.getElementById("my_talk_form").submit();
-      document.getElementById("talk_topic").readOnly = true;
+      setTimeout(function() {
+        document.getElementById("talk_topic").value = window.getSelection().toString().trim();
+        document.getElementById("my_talk_form").submit();
+        document.getElementById("talk_topic").readOnly = true;
+      }, delayInMilliseconds);
     }
     else{
       b=a;

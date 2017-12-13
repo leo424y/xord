@@ -5,14 +5,16 @@
 <%# column_chart Talk.group_by_hour_of_day(:created_at, format: "%l %P").count , download: true %>
 <% @talks.each do |talk| %>
     <% talk.each do |talk| %>
-        <%= link_to((fa_icon "wikipedia-w"), wiki_url(talk.topic, 'url')) %>
+        <p><%= link_to((fa_icon "wikipedia-w"), wiki_url(talk.topic, 'url')) %>
         <%= link_to("[#{talk.topic}]  ", new_talk_path(f: talk.id)) %>
-        <% words = split_to_words(talk.topic) %>
-        <% links = split_to_links(words, talk.topic) %>
-        <% words.each_with_index do |x, index| %>
-            <%= link_to(x, add_talks_path(t: links[index]) ) %>
-        <% end %>
-        <p><%# link_to("#{(talk.topic.split('')-[talk.topic.split('').last]).join('')}<font color='red'>#{talk.topic.split('').last}</font>".html_safe, link_by_topic(talk)) %></p>
+        <% result = wiki(talk.topic) %>
+        <%= result.blank? ? 'Not Found' : result %></p>
+        <%# words = split_to_words(talk.topic) %>
+        <%# links = split_to_links(words, talk.topic) %>
+        <%# words.each_with_index do |x, index| %>
+            <%# link_to(x, add_talks_path(t: links[index]) ) %>
+        <%# end %>
+        <%# link_to("#{(talk.topic.split('')-[talk.topic.split('').last]).join('')}<font color='red'>#{talk.topic.split('').last}</font>".html_safe, link_by_topic(talk)) %>
     <% end %>
 <% end %>
 <!-- , style: "font-size: #{(parent_talk(talk.id).count-1)+24}px" -->

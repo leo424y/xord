@@ -48,17 +48,17 @@ module TalksHelper
   def split_to_words(word)
     wiki_words = wiki(word)
     if lang_is(word) == 'zh' && wiki_words.present?
-      CKIP.segment( wiki_words.gsub(/[\r\n\t<>]/ ,""), 'neat').split('　')
+      CKIP.segment( wiki_words.gsub(/[\t<>]/ ,""), 'neat').split('　')
     else
       wiki_words.split(' ')
     end
   end
 
-  def split_to_links(word)
+  def split_to_links(words, word)
     if lang_is(word) == 'zh'
-      split_to_words(word).map{ |x| x.gsub(/[\r\n，。；·、]/ ,"") }
+      words.map{ |x| x.gsub(/[\r\n，。；·、]/ ,"") }
     else
-      split_to_words(word).map{ |x| x.gsub(/[,.():{}'"?!]/ ,"").singularize }
+      words.map{ |x| x.gsub(/[,.():{}'"?!]/ ,"").singularize }
     end
   end
 

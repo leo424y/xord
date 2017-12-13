@@ -1,4 +1,4 @@
-require 'ckip_client'
+require './lib/ckip_client'
 
 module TalksHelper
   def wiki(word)

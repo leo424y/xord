@@ -1,7 +1,5 @@
 require "spec_helper"
 require './app/helpers/talks_helper.rb'
-require 'ckip_client'
-
 
 describe TalksHelper do
   before(:each) do

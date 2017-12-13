@@ -1,4 +1,4 @@
-require './lib/ckip_client'
+# require './lib/ckip_client'
 
 module TalksHelper
   def wiki(word)
@@ -45,22 +45,22 @@ module TalksHelper
     end
   end
 
-  def split_to_words(word)
-    wiki_words = wiki(word)
-    if lang_is(word) == 'zh' && wiki_words.present?
-      CKIP.segment( wiki_words.gsub(/[\t<>]/ ,""), 'neat').split('　')
-    else
-      wiki_words.split(' ')
-    end
-  end
-
-  def split_to_links(words, word)
-    if lang_is(word) == 'zh'
-      words.map{ |x| x.gsub(/[\r\n，。；·、]/ ,"") }
-    else
-      words.map{ |x| x.gsub(/[,.():{}'"?!]/ ,"").singularize }
-    end
-  end
+  # def split_to_words(word)
+  #   wiki_words = wiki(word)
+  #   if lang_is(word) == 'zh' && wiki_words.present?
+  #     CKIP.segment( wiki_words.gsub(/[\t<>]/ ,""), 'neat').split('　')
+  #   else
+  #     wiki_words.split(' ')
+  #   end
+  # end
+  #
+  # def split_to_links(words, word)
+  #   if lang_is(word) == 'zh'
+  #     words.map{ |x| x.gsub(/[\r\n，。；·、]/ ,"") }
+  #   else
+  #     words.map{ |x| x.gsub(/[,.():{}'"?!]/ ,"").singularize }
+  #   end
+  # end
 
 
 

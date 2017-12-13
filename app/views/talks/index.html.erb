@@ -8,7 +8,7 @@
         <p><%= link_to((fa_icon "wikipedia-w"), wiki_url(talk.topic, 'url')) %>
         <%= link_to("[#{talk.topic}]  ", new_talk_path(f: talk.id)) %>
         <% result = wiki(talk.topic) %>
-        <%= result.blank? ? 'Not Found' : result %></p>
+        <%= result.blank? ? '...' : result %></p>
         <%# words = split_to_words(talk.topic) %>
         <%# links = split_to_links(words, talk.topic) %>
         <%# words.each_with_index do |x, index| %>

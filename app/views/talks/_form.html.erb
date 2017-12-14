@@ -28,7 +28,6 @@ int1 = setInterval(
 
   function()
   {
-    // document.getElementById("talk_topic").value = document.getElementById("talk_topic").value.trim();
     aw = document.getElementById("talk_topic").value;
     a = aw.length;
     sw = window.getSelection().toString();
@@ -36,6 +35,7 @@ int1 = setInterval(
     if (a!==b){timer=0}
     if (a!=0 && timer>1){
       timer=-1000
+      document.getElementById("talk_topic").value = document.getElementById("talk_topic").value.trim();
       document.getElementById("my_talk_form").submit();
       document.getElementById("talk_topic").readOnly = true;
     }

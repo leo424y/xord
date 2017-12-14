@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :talks do
     collection do
       get 'add'
+      get 'mic'
+      get 'lang'
     end
   end
 

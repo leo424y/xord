@@ -1,6 +1,16 @@
 class TalksController < ApplicationController
   before_action :set_talk, only: [:show, :edit, :update, :destroy]
 
+  def mic
+    (session[:mic] == 'on') ? session[:mic] = 'off' : session[:mic] = 'on'
+    redirect_to talks_path
+  end
+
+  def lang
+    (session[:lang] == 'en') ? session[:lang] = 'zh-TW' : session[:lang] = 'en'
+    redirect_to talks_path
+  end
+
   # GET /talks
   # GET /talks.json
   def index
@@ -61,10 +71,10 @@ class TalksController < ApplicationController
     end
   end
 
-  def add
-    Talk.create(topic: params[:t])
-    redirect_to talks_path
-  end
+  # def add
+  #   Talk.create(topic: params[:t])
+  #   redirect_to talks_path
+  # end
 
   # PATCH/PUT /talks/1
   # PATCH/PUT /talks/1.json

@@ -28,6 +28,8 @@ int1 = setInterval(
 
   function()
   {
+    mic_switch()
+    lang_switch()
     aw = document.getElementById("talk_topic").value;
     a = aw.length;
     sw = window.getSelection().toString();
@@ -52,16 +54,32 @@ int1 = setInterval(
     }
   }, 500);
 
-
+  function mic_switch() {
+    var x = document.getElementsByClassName("fa-microphone-slash").length;
+    if (x != 0) {
+      recognition.stop();
+    }else{
+      recognition.stop();
+      recognition.start();
+    }
+  }
+  function lang_switch() {
+    var x = document.getElementsByClassName("fa-etsy").length;
+    if (x != 0) {
+      recognition.lang = 'en';
+    }else{
+      recognition.lang = 'zh-TW';
+    }
+  }
 
   // speech
   var text = document.querySelector(".speech");
-  var startBtn = document.querySelector(".start");
+  // var startBtn = document.querySelector(".start");
 
   var recognition = new webkitSpeechRecognition();
   // set params
   recognition.continuous = false;
-  // recognition.lang = 'zh-TW';
+  // recognition.lang = 'zh-TW'';
   // recognition.lang = 'en-US';
   recognition.lang = 'en';
   recognition.interimResults = true;
@@ -81,7 +99,7 @@ int1 = setInterval(
   recognition.onend = function() {
     console.log("end");
     // auto restart
-    recognition.start();
+    // recognition.start();
   }
 
   // var checkbox = document.querySelector("#open_edit");
@@ -93,11 +111,4 @@ int1 = setInterval(
   //       document.getElementById("talk_topic").readOnly = true;
   //     }
   // });
-
-  function foo() {
-      var selObj = window.getSelection();
-      alert(selObj);
-      var selRange = selObj.getRangeAt(0);
-      // do stuff with the range
-  }
 </script>

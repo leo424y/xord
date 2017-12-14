@@ -5,7 +5,9 @@
 <%# column_chart Talk.group_by_hour_of_day(:created_at, format: "%l %P").count , download: true %>
 <% @talks.each do |talk| %>
     <% talk.each do |talk| %>
-        <p><%= link_to((fa_icon "wikipedia-w"), wiki_url(talk.topic, 'url')) %>
+        <p><%= link_to((fa_icon ((session[:mic]=='on') ? "microphone" : "microphone-slash")), mic_talks_path) %>
+        <%= link_to((fa_icon ((session[:lang]=='en') ? "etsy" : "language")), lang_talks_path) if (session[:mic]=='on') %>
+        <%= link_to((fa_icon "wikipedia-w"), wiki_url(talk.topic, 'url')) %>
         <%= link_to("[#{talk.topic}]  ", new_talk_path(f: talk.id)) %>
         <% result = wiki(talk.topic) %>
         <%= result.blank? ? '...' : result %></p>

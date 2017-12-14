@@ -1,5 +1,6 @@
 <!-- <p id="notice"><%# notice %></p>
 <p id="notice">Use Chrome & talk to me start with <font color='red'><%# @shiritori_last %></font></p> -->
+<% content_for(:title){ Talk.find(params[:f]).topic }  %>
 <%= render 'form', talk: @talk %>
 <p>
   <% parent_talk(params[:f]).each_with_index do |f, index| %>

@@ -17,7 +17,7 @@ module TalksHelper
 
     # Send the request
     response = http.request(request)
-    JSON.parse(response.body).values[1]['pages'].values[0]['extract'].to_s
+    JSON.parse(response.body).values[1] && JSON.parse(response.body).values[1]['pages'].values[0]['extract'].to_s
   end
 
   def parent_talk(sub_id)
@@ -34,6 +34,7 @@ module TalksHelper
   end
 
   def wiki_url(word, type)
+    word = word.singularize
     lang = lang_is(word)
 
     if type == 'json'

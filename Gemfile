@@ -5,9 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-# gem 'ropencc'
-
-gem 'ckip_client'
+gem 'vcr'
+gem 'webmock'
 
 gem "chartkick"
 gem 'groupdate'

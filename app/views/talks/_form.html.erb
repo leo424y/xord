@@ -77,14 +77,14 @@ int1 = setInterval(
 
   var recognition = new webkitSpeechRecognition();
   // set params
-  recognition.continuous = false;
+  recognition.continuous = true;
   // recognition.lang = 'zh-TW'';
   // recognition.lang = 'en-US';
-  // recognition.lang = 'en';
+  recognition.lang = 'en';
   recognition.interimResults = true;
 
   // start immediately
-  // recognition.start();
+  recognition.start();
   recognition.onresult = function(event) {
     var result = event.results[event.results.length - 1];
     text.innerHTML = result[result.length - 1 ].transcript;
@@ -98,7 +98,7 @@ int1 = setInterval(
   recognition.onend = function() {
     console.log("end");
     // auto restart
-    // recognition.start();
+    recognition.start();
   }
 
   // var checkbox = document.querySelector("#open_edit");
@@ -110,6 +110,6 @@ int1 = setInterval(
   //       document.getElementById("talk_topic").readOnly = true;
   //     }
   // });
-  mic_switch()
-  lang_switch()
+  // mic_switch()
+  // lang_switch()
 </script>

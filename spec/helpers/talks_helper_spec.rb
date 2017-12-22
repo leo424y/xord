@@ -12,7 +12,6 @@ describe TalksHelper do
     it "return right content" do
       expect(wiki('dog')).to include("dog")
       expect(wiki('dog')).not_to include("pig")
-      expect(wiki('愛')).to include("愛,")
     end
   end
   context "#wiki_url" do

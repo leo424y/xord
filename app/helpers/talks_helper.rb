@@ -69,8 +69,16 @@ module TalksHelper
     if word == word.gsub(/[^\w]/, '_')
       'en'
       # 'simple'
-    elsif (word != word.gsub(/[^\w]/, '_'))
+    elsif word.contains_ja?
+      'ja'
+    else
       'zh'
     end
+  end
+end
+
+class String
+  def contains_ja?
+    !!(self =~ /\p{Han}|\p{Katakana}|\p{Hiragana}/)
   end
 end

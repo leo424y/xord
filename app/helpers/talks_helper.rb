@@ -69,8 +69,8 @@ module TalksHelper
     if word == word.gsub(/[^\w]/, '_')
       'en'
       # 'simple'
-    elsif word.contains_ja?
-      'ja'
+    # elsif word.contains_ja?
+    #   'ja'
     else
       'zh'
     end

@@ -89,6 +89,9 @@ GEM
     formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.4.7)
+      rails
+    graphql (1.7.7)
     groupdate (3.2.0)
       activesupport (>= 3)
     guard (2.14.1)
@@ -287,6 +290,8 @@ DEPENDENCIES
   factory_bot
   factory_bot_rails
   font-awesome-rails
+  graphiql-rails
+  graphql
   groupdate
   guard-rspec
   jbuilder (~> 2.5)

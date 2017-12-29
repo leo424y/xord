@@ -19,7 +19,10 @@
  // @media screen and (max-width: 400px) {
  // }
 
+body {background-color: black !important;}
+
 p {
+  color: white;
   font-size: 2em;
   text-decoration: none !important;
   line-height: 200%;
@@ -27,6 +30,7 @@ p {
 }
 
 textarea {
+  color: white;
   font-size: 2em;
   width: 100%;
   height: 1.5em;

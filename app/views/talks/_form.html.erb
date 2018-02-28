@@ -39,14 +39,14 @@ int1 = setInterval(
       document.getElementById("my_talk_form").submit();
       document.getElementById("talk_topic").readOnly = true;
     }
-    // else if (s>0 && timer>1){
-    //   timer=-1000
-    //   setTimeout(function() {
-    //     document.getElementById("talk_topic").value = window.getSelection().toString().trim();
-    //     document.getElementById("my_talk_form").submit();
-    //     document.getElementById("talk_topic").readOnly = true;
-    //   }, delayInMilliseconds);
-    // }
+    else if (s>0 && timer>1){
+      timer=-1000
+      setTimeout(function() {
+        document.getElementById("talk_topic").value = window.getSelection().toString().trim();
+        document.getElementById("my_talk_form").submit();
+        document.getElementById("talk_topic").readOnly = true;
+      }, delayInMilliseconds);
+    }
     else{
       b=a;
       timer=timer+0.5

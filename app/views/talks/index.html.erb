@@ -10,7 +10,7 @@
         <%# link_to((fa_icon ((session[:mic]=='on') ? "microphone" : "microphone-slash")), mic_talks_path) %>
         <%# link_to((fa_icon ((session[:lang]=='en') ? "etsy" : "language")), lang_talks_path) if (session[:mic]=='on') %>
         <%= link_to((fa_icon "wikipedia-w"), wiki_url(talk.topic, 'url')) %>
-        <%= link_to("[#{talk.topic}]  ", new_talk_path(f: talk.id)) %>
+        <%= link_to((fa_icon "link"), new_talk_path(f: talk.id)) %>
         <% result = wiki(talk.topic) %>
         <%= result.blank? ? '...' : result %></p>
         <%# words = split_to_words(talk.topic) %>

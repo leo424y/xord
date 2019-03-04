@@ -14,7 +14,7 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.json
   def index
-    response.headers["X-FRAME-OPTIONS"] = "ALLOW-FROM https://http://xord.herokuapp.com"
+    response.headers.except! 'X-Frame-Options'
 
     session[:page] = 'index'
     @talks=[]

@@ -7,17 +7,17 @@
 
 <% @talks.each do |talk| %>
     <% talk.each do |talk| %>
-      <p>
+    <p>
         <%# link_to((fa_icon ((session[:mic]=='on') ? "microphone" : "microphone-slash")), mic_talks_path) %>
         <%# link_to((fa_icon ((session[:lang]=='en') ? "etsy" : "language")), lang_talks_path) if (session[:mic]=='on') %>
 
-        <%= link_to((fa_icon "wikipedia-w"), wiki_url(talk.topic, 'url')) %>
-        <%= link_to((fa_icon "link"), new_talk_path(f: talk.id)) %>
+        <%# link_to((fa_icon "wikipedia-w"), wiki_url(talk.topic, 'url')) %>
+        <%# link_to((fa_icon "link"), new_talk_path(f: talk.id)) %>
 
         <% result = wiki(talk.topic) %>
 
-        <%= result.blank? ? '...' : result %></p>
-        
+        <%# result.blank? ? '...' : result %>
+    </p>
         <%# words = split_to_words(talk.topic) %>
         <%# links = split_to_links(words, talk.topic) %>
         <%# words.each_with_index do |x, index| %>

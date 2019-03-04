@@ -26,6 +26,8 @@ var timer=0;
 
 var delayInMilliseconds = 2000; //1 second
 
+document.getElementById("talk_topic").value = '';
+
 clearInterval(int1);
 int1 = setInterval(
 
@@ -38,7 +40,6 @@ int1 = setInterval(
     if (a!==b){timer=0}
     if (a!=0 && timer>1){
       timer=-1000
-      document.getElementById("talk_topic").value = '';
       document.getElementById("talk_topic").value = document.getElementById("talk_topic").value.trim();
       document.getElementById("my_talk_form").submit();
       document.getElementById("talk_topic").readOnly = true;

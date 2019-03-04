@@ -20,7 +20,7 @@ class TalksController < ApplicationController
 
   def index
     if params[:you_want]
-      redirect_to goto_talks_path(you_want: you_want[:params])
+      redirect_to goto_talks_path(you_want: params[:you_want])
     end
 
     session[:page] = 'index'

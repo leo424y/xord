@@ -62,11 +62,11 @@ class TalksController < ApplicationController
     @talk = Talk.new(talk_params)
     respond_to do |format|
       if @talk.save
-        # create_new_talk(@talk)
-        # shiritori(talk_params)
+        create_new_talk(@talk)
+        shiritori(talk_params)
+        format.html { redirect_to "https://www.google.com/search?q=#{@talk.topic}&btnI=" }
         # format.html { redirect_to talks_path, notice: '⭕' }
         # format.json { render :show, status: :created, location: @talk }
-        redirect_to "https://www.google.com/search?q=#{@talk.topic}&btnI="
       else
         format.html { redirect_to talks_path, notice: '❌'  }
         format.json { render json: @talk.errors, status: :unprocessable_entity }

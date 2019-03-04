@@ -47,6 +47,7 @@ int1 = setInterval(
       setTimeout(function() {
         document.getElementById("talk_topic").value = window.getSelection().toString().trim();
         document.getElementById("my_talk_form").submit();
+        document.getElementById("talk_topic").value = '';
         document.getElementById("talk_topic").readOnly = true;
       }, delayInMilliseconds);
     }

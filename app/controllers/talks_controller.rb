@@ -14,6 +14,8 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.json
   def index
+    response.headers["X-FRAME-OPTIONS"] = "ALLOW-FROM https://http://xord.herokuapp.com"
+
     session[:page] = 'index'
     @talks=[]
     @parent_ids = []

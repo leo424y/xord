@@ -9,9 +9,10 @@
       class: 'speech', 
       autofocus: true, 
       readonly: true, 
-      placeholder: '說出你想要的，老師帶你去，結果不對的話，按上一頁回來換句話說吧；Say anything you want, go back to previous page and use other words if you don\'t get it!', 
+      placeholder: '說出你想要的 | Say anything you want', 
       width: '100%', 
-      height: '400' %>
+      height: '400' 
+      %>
   </div>
 
   <div class="field" hidden>
@@ -21,6 +22,7 @@
 
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 <% end %>
+<p>若結果不對的話，按上一頁回來換句話說吧；Go back to previous page and use other words if you don\'t get it!</p>
 <script>
 
 var a=0;

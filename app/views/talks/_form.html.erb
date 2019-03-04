@@ -3,7 +3,15 @@
   <!-- <input type="checkbox" id='open_edit'/> -->
 
   <div class="field">
-    <%= form.text_area :topic, id: :talk_topic, autocomplete: "off", class: 'speech', autofocus: true %>
+    <%= form.text_area :topic, 
+    id: :talk_topic, 
+      autocomplete: "off", 
+      class: 'speech', 
+      autofocus: true, 
+      readonly: true, 
+      placeholder: '說出你想要的，老師帶你去，結果不對的話，按上一頁回來換句話說吧；Say anything you want, go back to previous page and use other words if you don\'t get it!', 
+      width: '100%', 
+      height: '400' %>
   </div>
 
   <div class="field" hidden>

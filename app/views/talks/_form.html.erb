@@ -10,7 +10,7 @@
     <%= form.label :from %>
     <%= form.text_field :from, id: :talk_from, readonly: true, value: params[:f] %>
   </div>
-  
+
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 <% end %>
 <script>
@@ -80,8 +80,8 @@ int1 = setInterval(
   var recognition = new webkitSpeechRecognition();
   // set params
   recognition.continuous = true;
-  // recognition.lang = 'zh-TW'';
-  recognition.lang = 'en-US';
+  recognition.lang = 'zh-TW'';
+  // recognition.lang = 'en-US';
   // recognition.lang = 'zh-TW';
   recognition.interimResults = true;
 

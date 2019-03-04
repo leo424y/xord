@@ -5,7 +5,7 @@
 <%# link_to "_", talks_path(format: "csv") %>
 <%# column_chart Talk.group_by_hour_of_day(:created_at, format: "%l %P").count , download: true %>
 
-<% myurl = "https://www.google.com/search?q=#{@shiritori_last}&btnI=" %>
+<% myurl = "https://www.google.com/search?q=#{Talk.last.topic}&btnI=" %>
 <%= "<embed src = #{myurl} width=100% height=100% />".html_safe %>
 <% @talks.each do |talk| %>
     <% talk.each do |talk| %>

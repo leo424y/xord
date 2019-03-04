@@ -15,6 +15,7 @@ class TalksController < ApplicationController
   # GET /talks.json
 
   def goto
+    @goto_string = params[:you_want]
     @goto_page =  "https://www.google.com/search?q=#{params[:you_want]}&btnI="
   end
 

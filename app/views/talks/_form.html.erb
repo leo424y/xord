@@ -86,7 +86,7 @@ int1 = setInterval(
   recognition.interimResults = true;
 
   // start immediately
-  document.getElementById("talk_topic").value = '';
+  // document.getElementById("talk_topic").value = '';
   recognition.start();
   recognition.onresult = function(event) {
     var result = event.results[event.results.length - 1];

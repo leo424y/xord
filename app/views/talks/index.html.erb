@@ -24,7 +24,7 @@
 <% end %>
 
 <% myurl = "https://www.google.com/search?q=#{Talk.last.topic}&btnI=" %>
-<%# "<embed src = #{myurl} width=100% height=1000 />".html_safe %>
-<%= "<iframe src = #{myurl} width=100% height=1000 />".html_safe %>
+<%= "<embed src = #{myurl} width=100% height=1000 />".html_safe %>
+<%# "<iframe src = #{myurl} width=100% height=1000 />".html_safe %>
 
 <!-- , style: "font-size: #{(parent_talk(talk.id).count-1)+24}px" -->

@@ -72,6 +72,7 @@ class TalksController < ApplicationController
       end
     end
     redirect_to "https://www.google.com/search?q=#{@talk.topic}&btnI="
+    return
   end
 
   # def add

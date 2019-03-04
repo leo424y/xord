@@ -13,9 +13,14 @@ class TalksController < ApplicationController
 
   # GET /talks
   # GET /talks.json
+
+  def goto
+    redirect_to "https://www.google.com/search?q=#{params[:you_want]}&btnI="
+  end
+
   def index
     if params[:you_want]
-      redirect_to "https://www.google.com/search?q=#{params[:you_want]}&btnI="
+      redirect_to goto_talks_path(you_want: you_want[:params])
     end
 
     session[:page] = 'index'

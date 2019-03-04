@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'add'
       get 'mic'
       get 'lang'
+      get 'goto'
     end
   end
 

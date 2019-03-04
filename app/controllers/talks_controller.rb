@@ -15,7 +15,7 @@ class TalksController < ApplicationController
   # GET /talks.json
   def index
     if params[:you_want]
-      redirect_to "https://www.google.com/search?q=#{you_want}&btnI="
+      redirect_to "https://www.google.com/search?q=#{params[:you_want]}&btnI="
     end
 
     session[:page] = 'index'

@@ -1,4 +1,4 @@
-<% content_for(:title){ @goto_string }  %>
+<% content_for(:title){ params[:you_want] }  %>
 <script>
-  window.location = '<%= @goto_page %>';
+  window.location = "<%= 'https://www.google.com/search?q='+params[:you_want]+'&btnI=' %>";
 </script>

@@ -14,7 +14,9 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.json
   def index
-    response.headers.except! 'X-Frame-Options'
+    if params[:you_want]
+      redirect_to "https://www.google.com/search?q=#{you_want}&btnI="
+    end
 
     session[:page] = 'index'
     @talks=[]
@@ -64,8 +66,8 @@ class TalksController < ApplicationController
       if @talk.save
         # create_new_talk(@talk)
         # shiritori(talk_params)
-        format.html { redirect_to "https://www.google.com/search?q=#{@talk.topic}&btnI=" }
-        # format.html { redirect_to talks_path, notice: '⭕' }
+        # format.html { redirect_to "https://www.google.com/search?q=#{@talk.topic}&btnI=" }
+        format.html { redirect_to talks_path, notice: '⭕', you_want: @talk.topic }
         # format.json { render :show, status: :created, location: @talk }
       else
         format.html { redirect_to talks_path, notice: '❌'  }

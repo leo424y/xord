@@ -20,7 +20,7 @@ class TalksController < ApplicationController
 
     session[:page] = 'index'
     @talks=[]
-    @parent_ids = []
+    # @parent_ids = []
     @talks << Talk.order(id: :desc).first(1)
     # @talks << Talk.order('id DESC').limit(31).where('topic LIKE ? or topic LIKE  ?', '%嗎%', '%呢%').sample(1)
     # hour_groups = [1, 2, 4, 8]
@@ -30,14 +30,14 @@ class TalksController < ApplicationController
     #  # , 2.week, 1.month, 3.month, 6.month, 1.year]
     # day_groups.each {|t| @talks << Talk.where(created_at: Time.now-t-1.day..Time.now-t).order(id: :desc).sample(3)}
 
-    @shiritori_last = Talk.last[:topic].split('').last
+    # @shiritori_last = Talk.last[:topic].split('').last
 
 
-    @all_talks = Talk.all
+    # @all_talks = Talk.all
 
     respond_to do |format|
       format.html
-      format.csv { send_data @all_talks.to_csv, filename: "users-#{Date.today}.csv" }
+      #format.csv { send_data @all_talks.to_csv, filename: "users-#{Date.today}.csv" }
     end
   end
 
@@ -47,12 +47,12 @@ class TalksController < ApplicationController
   end
 
   # GET /talks/new
-  def new
-    @parent_ids = []
-    @talk = Talk.new
-    session[:page] = 'new'
-    @shiritori_last = Talk.find(params['f'])[:topic].split('').last
-  end
+  # def new
+  #   # @parent_ids = []
+  #   @talk = Talk.new
+  #   session[:page] = 'new'
+  #   # @shiritori_last = Talk.find(params['f'])[:topic].split('').last
+  # end
 
   # GET /talks/1/edit
   # def edit
@@ -63,16 +63,18 @@ class TalksController < ApplicationController
   def create
     @talk = Talk.new(talk_params)
     respond_to do |format|
-      if @talk.save
-        # create_new_talk(@talk)
-        # shiritori(talk_params)
-        # format.html { redirect_to "https://www.google.com/search?q=#{@talk.topic}&btnI=" }
-        format.html { redirect_to talks_path, notice: '⭕', you_want: @talk.topic }
-        # format.json { render :show, status: :created, location: @talk }
-      else
-        format.html { redirect_to talks_path, notice: '❌'  }
-        format.json { render json: @talk.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to talks_path(you_want: @talk.topic) }
+
+      # if @talk.save
+      #   # create_new_talk(@talk)
+      #   # shiritori(talk_params)
+      #   # format.html { redirect_to "https://www.google.com/search?q=#{@talk.topic}&btnI=" }
+      #   format.html { redirect_to talks_path, notice: '⭕', you_want: @talk.topic }
+      #   # format.json { render :show, status: :created, location: @talk }
+      # else
+      #   format.html { redirect_to talks_path, notice: '❌'  }
+      #   format.json { render json: @talk.errors, status: :unprocessable_entity }
+      # end
     end
   end
 

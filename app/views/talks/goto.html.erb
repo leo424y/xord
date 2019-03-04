@@ -1,4 +1,4 @@
 <% content_for(:title){ params[:you_want] }  %>
 <script>
-  window.location = "<%= 'https://www.google.com/search?q='+params[:you_want]+'&btnI=' %>";
+  window.location = "<%= raw 'https://www.google.com/search?q='+params[:you_want]+'&btnI=' %>";
 </script>

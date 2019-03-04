@@ -16,7 +16,7 @@ class TalksController < ApplicationController
 
   def goto
     @goto_string = params[:you_want]
-    @goto_page =  "https://www.google.com/search?q=#{params[:you_want]}\&btnI="
+    @goto_page =  'https://www.google.com/search?q=' + params[:you_want] + '&btnI='
   end
 
   def index

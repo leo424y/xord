@@ -1,4 +1,4 @@
-<%= form_with(model: talk, local: true, id: 'my_talk_form', autocomplete: "off") do |form| %>
+<%= form_with(model: talk, local: true, id: 'my_talk_form') do |form| %>
   <%# form.range_field :rate, min: 0, max: 200, class: 'fixed' %>
   <!-- <input type="checkbox" id='open_edit'/> -->
 
@@ -41,6 +41,7 @@ int1 = setInterval(
       document.getElementById("talk_topic").value = document.getElementById("talk_topic").value.trim();
       document.getElementById("my_talk_form").submit();
       document.getElementById("talk_topic").readOnly = true;
+      document.getElementById("my_talk_form").reset();
     }
     else if (s>0 && timer>1){
       timer=-1000

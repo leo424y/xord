@@ -71,6 +71,7 @@ class TalksController < ApplicationController
         format.json { render json: @talk.errors, status: :unprocessable_entity }
       end
     end
+    redirect_to "https://www.google.com/search?q=#{@talk.topic}&btnI="
   end
 
   # def add

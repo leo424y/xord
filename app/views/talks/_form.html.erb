@@ -38,6 +38,7 @@ int1 = setInterval(
     if (a!==b){timer=0}
     if (a!=0 && timer>1){
       timer=-1000
+      document.getElementById("talk_topic").value = '';
       document.getElementById("talk_topic").value = document.getElementById("talk_topic").value.trim();
       document.getElementById("my_talk_form").submit();
       document.getElementById("talk_topic").readOnly = true;
@@ -47,7 +48,6 @@ int1 = setInterval(
       setTimeout(function() {
         document.getElementById("talk_topic").value = window.getSelection().toString().trim();
         document.getElementById("my_talk_form").submit();
-        document.getElementById("talk_topic").value = '';
         document.getElementById("talk_topic").readOnly = true;
       }, delayInMilliseconds);
     }

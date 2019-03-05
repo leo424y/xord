@@ -19,7 +19,7 @@ class TalksController < ApplicationController
 
   def index
     if params[:you_want] =~ /真的假的/
-      redirect_to 'https://cofacts.g0v.tw/replies?before=&after=&q='+params[:you_want]
+      redirect_to 'https://cofacts.g0v.tw/replies?before=&after=&q='+params[:you_want]str.gsub("真的假的", "")
     elsif params[:you_want]
       redirect_to goto_talks_path(you_want: params[:you_want])
     end

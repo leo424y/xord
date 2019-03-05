@@ -1,3 +1,4 @@
+<h2>Hey! Just say want you want</h2>
 <%= form_with(model: talk, local: true, id: 'my_talk_form') do |form| %>
   <%# form.range_field :rate, min: 0, max: 200, class: 'fixed' %>
   <!-- <input type="checkbox" id='open_edit'/> -->
@@ -9,7 +10,7 @@
       class: "speech", 
       autofocus: true, 
       readonly: true, 
-      placeholder: "說就對 | Say it",
+      placeholder: "...",
       width: "100%", 
       height: "400"
       %>
@@ -22,7 +23,10 @@
 
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 <% end %>
-<p>若結果不對的話，按上一頁回來換句話說吧；Go back to previous page and use other words if you do not get it! Android and Desktop Chrome only.</p>
+<p>🎤 請先授權使用麥克風</p>
+<p>🎤 Need to use microphone</p>
+<p>🎤 若結果不對的話，按上一頁回來換句話說吧</p>
+<p>🎤 Go back to previous page and use other words if you do not get it! Android and Desktop Chrome only.</p>
 
 <script>
 

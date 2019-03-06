@@ -9,7 +9,7 @@
       class: "speech", 
       autofocus: true, 
       readonly: true, 
-      placeholder: '例：'+%w(買一送一真的假的 維基百科台灣 公視的Youtube 美麗的台語 我愛你的台椅 萌芽的阿美語 五月天的Facebook 周杰倫的IG 周子瑜的FB 柯文哲的新聞 倪匡的書 阿根廷探戈 管樂表演 聊天機器人 愛樂電台 台灣美術館的特展).shuffle.pop,
+      placeholder: '',
       width: "100%", 
       height: "400"
       %>
@@ -35,13 +35,32 @@
 var a=0;
 var aw='';
 var b=0;
-var s=0;
-var sw='';
+// var s=0;
+// var sw='';
 
 var int1;
 var timer=0;
 
 var delayInMilliseconds = 2000; //1 second
+
+var items=[
+'買一送一真的假的',
+'維基百科台灣', 
+'公視的Youtube', 
+'美麗的台語',
+'我愛你的抬椅', 
+'萌芽的阿美語',
+'五月天的Facebook',
+'周杰倫的IG', 
+'周子瑜的FB',
+'柯文哲的新聞', 
+'倪匡的書',
+'阿根廷探戈',
+'管樂表演', 
+'聊天機器人',
+'愛樂電台',
+'台灣美術館的特展'
+]
 
 clearInterval(int1);
 int1 = setInterval(
@@ -50,27 +69,28 @@ int1 = setInterval(
   {
     aw = document.getElementById("talk_topic").value;
     a = aw.length;
-    sw = window.getSelection().toString();
-    s = sw.length;
+    // sw = window.getSelection().toString();
+    // s = sw.length;
     if (a!==b){timer=0}
-    if (a!=0 && timer>1){
+    if (a!=0 && timer>2){
       timer=-1000
       document.getElementById("talk_topic").value = document.getElementById("talk_topic").value.trim();
       document.getElementById("my_talk_form").submit();
       document.getElementById("talk_topic").readOnly = true;
       document.getElementById("my_talk_form").reset();
     }
-    else if (s>0 && timer>1){
-      timer=-1000
-      setTimeout(function() {
-        document.getElementById("talk_topic").value = window.getSelection().toString().trim();
-        document.getElementById("my_talk_form").submit();
-        document.getElementById("talk_topic").readOnly = true;
-      }, delayInMilliseconds);
-    }
+    // else if (s>0 && timer>1){
+    //   timer=-1000
+    //   setTimeout(function() {
+    //     document.getElementById("talk_topic").value = window.getSelection().toString().trim();
+    //     document.getElementById("my_talk_form").submit();
+    //     document.getElementById("talk_topic").readOnly = true;
+    //   }, delayInMilliseconds);
+    // }
     else{
       b=a;
-      timer=timer+0.5
+      timer=timer+0.5;
+      document.getElementById("talk_topic").placeholder = items[Math.floor(Math.random()*items.length)];
     }
   }, 500);
 

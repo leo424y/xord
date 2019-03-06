@@ -33,11 +33,11 @@ class TalksController < ApplicationController
     elsif params[:you_want] =~ /的行程/
       redirect_to 'https://calendar.google.com/calendar/r/search?q=' + params[:you_want].gsub("的行程", "")
     elsif params[:you_want] =~ /的圖片/
-      redirect_to 'https://www.google.com.tw/search?tbm=isch&q=' + params[:you_want].gsub("的圖片", "")
+      redirect_to 'https://www.google.com.tw/search?tbm=isch&q=' + params[:you_want].chomp("的圖片")
     elsif params[:you_want] =~ /的文獻/
-      redirect_to 'https://scholar.google.com.tw/scholar?q=' + params[:you_want].gsub("的文獻", "")
+      redirect_to 'https://scholar.google.com.tw/scholar?q=' + params[:you_want].chomp("的文獻")
     elsif params[:you_want] =~ /的民宿/
-      redirect_to 'https://www.airbnb.com.tw/s/homes?query=' + params[:you_want].gsub("的民宿", "")
+      redirect_to 'https://www.airbnb.com.tw/s/homes?query=' + params[:you_want].chomp("的民宿")
     elsif params[:you_want]
       redirect_to goto_talks_path(you_want: params[:you_want])
     end

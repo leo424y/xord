@@ -28,6 +28,8 @@ class TalksController < ApplicationController
       redirect_to 'https://www.google.com/maps/search/' + params[:you_want].gsub("在哪裡", "").gsub("在哪", "")         
     elsif params[:you_want] =~ /的英文/
       redirect_to 'https://translate.google.com.tw/#view=home&op=translate&sl=auto&tl=en&text=' + params[:you_want].gsub("的英文", "")
+    elsif params[:you_want] =~ /的文件/
+      redirect_to 'https://drive.google.com/drive/u/0/search?q=' + params[:you_want].gsub("的文件", "")
     elsif params[:you_want]
       redirect_to goto_talks_path(you_want: params[:you_want])
     end

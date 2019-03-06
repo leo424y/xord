@@ -24,6 +24,8 @@ class TalksController < ApplicationController
       redirect_to 'https://itaigi.tw/k/'+params[:you_want].gsub("的台語", "")
     elsif params[:you_want] =~ /的阿美語/
       redirect_to 'https://amis.moedict.tw/'+params[:you_want].gsub("的阿美語", "")      
+    elsif params[:you_want] =~ /在哪/
+      redirect_to 'https://www.google.com/maps/search'+params[:you_want].gsub("在哪", "").gsub("在哪裡", "")            
     elsif params[:you_want]
       redirect_to goto_talks_path(you_want: params[:you_want])
     end

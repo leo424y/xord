@@ -22,6 +22,8 @@ class TalksController < ApplicationController
       redirect_to 'https://cofacts.g0v.tw/replies?before=&after=&q=' + params[:you_want][0..-5]
     elsif params[:you_want] =~ /打給/
       redirect_to 'tel:+' + params[:you_want][2..-1]
+    elsif params[:you_want] =~ /簡訊給/
+      redirect_to 'sms:' + params[:you_want][3..-1]
     elsif params[:you_want] =~ /候選人/
       redirect_to 'https://councils.g0v.tw/?name=' + params[:you_want][0..-4]
     elsif params[:you_want] =~ /的台語|的臺語|地台語|地臺語/

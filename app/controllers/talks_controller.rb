@@ -18,12 +18,12 @@ class TalksController < ApplicationController
   end
 
   def index
-    if params[:you_want] =~ /真的假的/
-      redirect_to 'https://cofacts.g0v.tw/replies?before=&after=&q=' + params[:you_want].gsub("真的假的", "")
+    if params[:you_want] =~ /真的假的|貞的假的/
+      redirect_to 'https://cofacts.g0v.tw/replies?before=&after=&q=' + params[:you_want][0..-5]
     elsif params[:you_want] =~ /的台語|的臺語|地台語|地臺語/
-      redirect_to 'https://itaigi.tw/k/' + params[:you_want].gsub("的台語", "")
+      redirect_to 'https://itaigi.tw/k/' + params[:you_want][0..-4]
     elsif params[:you_want] =~ /的阿美語|地阿美語/
-      redirect_to 'https://amis.moedict.tw/' + params[:you_want].gsub("的阿美語", "")      
+      redirect_to 'https://amis.moedict.tw/' + params[:you_want][0..-5]
     elsif params[:you_want] =~ /的政治獻金|地政治獻金/
       redirect_to 'https://www.readr.tw/project/political-contribution/explore?name=' + params[:you_want][0..2] + "&ordinal=9"  
     elsif params[:you_want] =~ /在哪/

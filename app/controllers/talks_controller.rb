@@ -24,6 +24,8 @@ class TalksController < ApplicationController
       redirect_to 'https://itaigi.tw/k/' + params[:you_want].gsub("的台語", "")
     elsif params[:you_want] =~ /的阿美語/
       redirect_to 'https://amis.moedict.tw/' + params[:you_want].gsub("的阿美語", "")      
+    elsif params[:you_want] =~ /的政治獻金/
+      redirect_to 'https://www.readr.tw/project/political-contribution/explore?name=' + params[:you_want].gsub("的政治獻金", "") + "&ordinal=9"  
     elsif params[:you_want] =~ /在哪/
       redirect_to 'https://www.google.com/maps/search/' + params[:you_want].gsub("在哪裡", "").gsub("在哪", "")         
     elsif params[:you_want] =~ /的英文/

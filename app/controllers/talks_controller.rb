@@ -30,6 +30,8 @@ class TalksController < ApplicationController
       redirect_to 'https://www.readr.tw/project/political-contribution/explore?name=' + params[:you_want][0..2] + "&ordinal=9"  
     elsif params[:you_want] =~ /在哪/
       redirect_to 'https://www.google.com/maps/search/' + params[:you_want].gsub("在哪裡", "").gsub("在哪", "")         
+    elsif params[:you_want] =~ /外送|外賣/
+      redirect_to 'https://www.ubereats.com/zh-TW/search/?q=' + params[:you_want][0..-3]
     elsif params[:you_want] =~ /腳踏車站/
       redirect_to 'https://www.google.com/maps/search/ubike' 
     elsif params[:you_want] =~ /的英文|地英語/

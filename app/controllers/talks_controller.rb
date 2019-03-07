@@ -23,7 +23,7 @@ class TalksController < ApplicationController
     elsif params[:you_want] =~ /打給/
       redirect_to 'tel:+' + params[:you_want][2..-1]
     elsif params[:you_want] =~ /簡訊給/
-      redirect_to 'sms:' + params[:you_want][3..-1]
+      redirect_to 'sms:' + params[:you_want].split('簡訊給')[1] + '&body=' + params[:you_want].split('簡訊給')[0]
     elsif params[:you_want] =~ /候選人/
       redirect_to 'https://councils.g0v.tw/?name=' + params[:you_want][0..-4]
     elsif params[:you_want] =~ /的台語|的臺語|地台語|地臺語/

@@ -40,6 +40,8 @@ class TalksController < ApplicationController
       redirect_to 'https://scholar.google.com.tw/scholar?q=' + params[:you_want][0..-4]
     elsif params[:you_want] =~ /的民宿|地民宿/
       redirect_to 'https://www.airbnb.com.tw/s/homes?query=' + params[:you_want][0..-4]
+    elsif params[:you_want] =~ /的文章|地文章/
+      redirect_to 'https://medium.com/search?q=' + params[:you_want][0..-4]
     elsif params[:you_want] =~ /自拍的相片/
       redirect_to 'https://photos.google.com/search/selfies'
     elsif params[:you_want]

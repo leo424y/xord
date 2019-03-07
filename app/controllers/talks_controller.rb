@@ -20,25 +20,25 @@ class TalksController < ApplicationController
   def index
     if params[:you_want] =~ /真的假的/
       redirect_to 'https://cofacts.g0v.tw/replies?before=&after=&q=' + params[:you_want].gsub("真的假的", "")
-    elsif params[:you_want] =~ /的台語/
+    elsif params[:you_want] =~ /的台語|的臺語|地台語|地臺語/
       redirect_to 'https://itaigi.tw/k/' + params[:you_want].gsub("的台語", "")
-    elsif params[:you_want] =~ /的阿美語/
+    elsif params[:you_want] =~ /的阿美語|地阿美語/
       redirect_to 'https://amis.moedict.tw/' + params[:you_want].gsub("的阿美語", "")      
-    elsif params[:you_want] =~ /的政治獻金/
-      redirect_to 'https://www.readr.tw/project/political-contribution/explore?name=' + params[:you_want].gsub("的政治獻金", "") + "&ordinal=9"  
+    elsif params[:you_want] =~ /的政治獻金|地政治獻金/
+      redirect_to 'https://www.readr.tw/project/political-contribution/explore?name=' + params[:you_want][0..2] + "&ordinal=9"  
     elsif params[:you_want] =~ /在哪/
       redirect_to 'https://www.google.com/maps/search/' + params[:you_want].gsub("在哪裡", "").gsub("在哪", "")         
-    elsif params[:you_want] =~ /的英文/
-      redirect_to 'https://translate.google.com.tw/#view=home&op=translate&sl=auto&tl=en&text=' + params[:you_want].gsub("的英文", "")
-    elsif params[:you_want] =~ /的文件/
-      redirect_to 'https://drive.google.com/drive/u/0/search?q=' + params[:you_want].gsub("的文件", "")
-    elsif params[:you_want] =~ /的行程/
-      redirect_to 'https://calendar.google.com/calendar/r/search?q=' + params[:you_want].gsub("的行程", "")
-    elsif params[:you_want] =~ /的圖片/
+    elsif params[:you_want] =~ /的英文|地英語/
+      redirect_to 'https://translate.google.com.tw/#view=home&op=translate&sl=auto&tl=en&text=' + params[:you_want][0..-4]
+    elsif params[:you_want] =~ /的文件|地文件/
+      redirect_to 'https://drive.google.com/drive/u/0/search?q=' + params[:you_want][0..-4]
+    elsif params[:you_want] =~ /的活動|地活動/
+      redirect_to 'https://calendar.google.com/calendar/r/search?q=' + params[:you_want][0..-4]
+    elsif params[:you_want] =~ /的圖片|地圖片/
       redirect_to 'https://www.google.com.tw/search?tbm=isch&q=' + params[:you_want][0..-4]
-    elsif params[:you_want] =~ /的文獻/
+    elsif params[:you_want] =~ /的文獻|地文獻/
       redirect_to 'https://scholar.google.com.tw/scholar?q=' + params[:you_want][0..-4]
-    elsif params[:you_want] =~ /的民宿/
+    elsif params[:you_want] =~ /的民宿|地民宿/
       redirect_to 'https://www.airbnb.com.tw/s/homes?query=' + params[:you_want][0..-4]
     elsif params[:you_want] =~ /自拍的相片/
       redirect_to 'https://photos.google.com/search/selfies'

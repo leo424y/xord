@@ -28,8 +28,8 @@ class TalksController < ApplicationController
       redirect_to 'https://councils.g0v.tw/?name=' + params[:you_want][0..-4]
     elsif params[:you_want] =~ /的台語|的臺語|地台語|地臺語/
       redirect_to 'https://itaigi.tw/k/' + params[:you_want][0..-4]
-    elsif params[:you_want] =~ /的阿美語|地阿美語/
-      redirect_to 'https://amis.moedict.tw/' + params[:you_want][0..-5]
+    # elsif params[:you_want] =~ /的阿美語|地阿美語/
+    #   redirect_to 'https://amis.moedict.tw/' + params[:you_want][0..-5]
     elsif params[:you_want] =~ /的政治獻金|地政治獻金/
       redirect_to 'https://www.readr.tw/project/political-contribution/explore?name=' + params[:you_want][0..2] + "&ordinal=9"  
     elsif params[:you_want] =~ /在哪/
@@ -54,6 +54,8 @@ class TalksController < ApplicationController
       redirect_to 'https://github.com/search?q=' + params[:you_want][0..-5]
     elsif params[:you_want] =~ /的資料|地資料/
       redirect_to 'https://www.wikidata.org/w/index.php?search=' + params[:you_want][0..-4]
+    elsif params[:you_want] =~ /的用藥方法|地用藥方法/
+      redirect_to 'http://g0v.github.io/agriculture/pesticide/usages/?q=' + params[:you_want][0..-6]
     elsif params[:you_want] =~ /自拍的相片/
       redirect_to 'https://photos.google.com/search/selfies'
     elsif params[:you_want]

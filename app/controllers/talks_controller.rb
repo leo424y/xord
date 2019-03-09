@@ -17,7 +17,58 @@ class TalksController < ApplicationController
   def goto
   end
 
+
+  class Keyword
+    class << self
+      attr_reader :list
+
+      def register(keyword)
+        @list ||= []
+        @list.push(keyword)
+        @list.sort_by(&:priority)
+      end
+    end
+
+     attr_reader :priority
+
+    def initialize(rule, priority = 1, &block)
+      @rule = rule
+      @action = block
+      self.class.register(self)
+    end
+
+    def matched?(message)
+      @rule ~= message >= 0
+    end
+
+    def execute(message)
+      action.call(message)
+    end
+  end
+
+  class ABCKeyword < Keyword
+    def execute
+
+    end
+  end
+
+  KEYWORD_LIST = [
+    {rule: /真的假的|貞的假的/, action: -> (you_want) { 'https://cofacts.g0v.tw/replies?before=&after=&q=' + you_want[0..-5] } },
+    # ...
+  ]
+
   def index
+
+     Keyword.new(/真的假的|貞的假的/) do |you_want|
+      'https://cofacts.g0v.tw/replies?before=&after=&q=' + you_want[0..-5]
+     end
+
+    matched = Kyeword.list.find { |keyword| keyword.matched?(params[:you_want]) }
+    return redirect_to xxx if matched.nil?
+    redirect_to matched[:action].call(params[:you_want])
+
+    KeyworsSearchService.new(params[:you_want]).execute
+
     if params[:you_want] =~ /真的假的|貞的假的/
       redirect_to 'https://cofacts.g0v.tw/replies?before=&after=&q=' + params[:you_want][0..-5]
     elsif params[:you_want] =~ /打給/

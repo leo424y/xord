@@ -56,6 +56,8 @@ class TalksController < ApplicationController
       redirect_to 'https://www.wikidata.org/w/index.php?search=' + params[:you_want][0..-4]
     elsif params[:you_want] =~ /的用藥|地用藥/
       redirect_to 'http://g0v.github.io/agriculture/pesticide/usages/?q=' + params[:you_want][0..-4]
+    elsif params[:you_want] =~ /的公民科技新聞|地公民科技新聞/
+      redirect_to 'https://g0v.news/search?q=' + params[:you_want][0..-8]
     elsif params[:you_want] =~ /自拍的相片/
       redirect_to 'https://photos.google.com/search/selfies'
     elsif params[:you_want]

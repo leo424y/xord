@@ -54,6 +54,8 @@ class TalksController < ApplicationController
       redirect_to 'https://www.airbnb.com.tw/s/homes?query=' + params[:you_want][0..-4]
     elsif params[:you_want] =~ /的文章|地文章/
       redirect_to 'https://medium.com/search?q=' + params[:you_want][0..-4]
+    elsif params[:you_want] =~ /的音樂/
+      redirect_to 'https://open.spotify.com/search/results/' + params[:you_want][0..-4]
     elsif params[:you_want] =~ /的程式碼|地程式碼|的城市碼|地城市碼/
       redirect_to 'https://github.com/search?q=' + params[:you_want][0..-5]
     elsif params[:you_want] =~ /的資料|地資料/

@@ -46,6 +46,8 @@ class TalksController < ApplicationController
       redirect_to 'https://calendar.google.com/calendar/event?action=TEMPLATE&text=' + params[:you_want][2..-1]
     elsif params[:you_want] =~ /的圖片|地圖片/
       redirect_to 'https://www.google.com.tw/search?tbm=isch&q=' + params[:you_want][0..-4]
+    elsif params[:you_want] =~ /*的動圖/
+      redirect_to 'https://giphy.com/search' + params[:you_want][0..-4]
     elsif params[:you_want] =~ /的文獻|地文獻/
       redirect_to 'https://scholar.google.com.tw/scholar?q=' + params[:you_want][0..-4]
     elsif params[:you_want] =~ /的民宿|地民宿/

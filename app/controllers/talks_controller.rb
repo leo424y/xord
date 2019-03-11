@@ -64,6 +64,8 @@ class TalksController < ApplicationController
       redirect_to 'http://g0v.github.io/agriculture/pesticide/usages/?q=' + params[:you_want][0..-4]
     elsif params[:you_want] =~ /的公民科技新聞|地公民科技新聞/
       redirect_to 'https://g0v.news/search?q=' + params[:you_want][0..-8]
+    elsif params[:you_want] =~ /的趨勢|地趨勢/
+      redirect_to 'https://trends.google.com/trends/explore?q=' + params[:you_want][0..-4].split('和').join(',')
     elsif params[:you_want] =~ /自拍的相片/
       redirect_to 'https://photos.google.com/search/selfies'
     elsif params[:you_want]
